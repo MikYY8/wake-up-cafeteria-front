@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import TelegramButton from "./components/TelegramButton";
+
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import Categories from "./pages/Categories";
+import ProductDetail from "./pages/ProductDetail";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Cart from "./pages/Cart";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+
+      <main style={{ minHeight: "80vh" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/categorias" element={<Categories />} />
+          <Route path="/categorias/:categoriaId" element={<Products />} />
+
+          <Route path="/categorias/:categoriaId/:id" element={<ProductDetail />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="/sobre-nosotros" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Register />} />
+          <Route path="/carrito" element={<Cart />} />
+        </Routes>
+      </main>
+
+      <Footer />
+      <TelegramButton />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
