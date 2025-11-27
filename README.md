@@ -1,91 +1,145 @@
-# 🧭 Guía Rápida de Trabajo en Equipo con Git y GitHub
+# Wake Up Cafeteria – Frontend
 
-## 🌱 1. Clonar el repositorio
+Wake Up Cafeteria es una aplicación web desarrollada con **React + Vite**, pensada para ofrecer una experiencia moderna y rápida para una cafetería. Incluye catálogo de productos, carrito de compras, páginas informativas y conexión con backend para funcionalidades completas.
 
-```bash
-git clone https://github.com/MikYY8/wake-up-cafeteria-front.git
-cd TU_REPO
+---
+
+## 🚀 Tecnologías utilizadas
+
+* **React 19**
+* **React DOM**
+* **React Router DOM** (para navegación)
+* **Tailwind CSS** + plugin para Vite
+* **Stripe** (`@stripe/react-stripe-js` y `@stripe/stripe-js`) para pagos
+* **React Toastify** para notificaciones
+* **Lucide React** para íconos
+* **Vite** como bundler y dev server
+* **ESLint** con plugins para React y React Hooks
+
+---
+
+## 📂 Estructura del proyecto
+
+```
+wake-up-cafeteria-front/
+│── public/
+│── src/
+│   ├── assets/        # Imágenes y recursos
+│   ├── components/    # Componentes reutilizables
+│   ├── hooks/         # Custom hooks
+│   ├── pages/         # Páginas principales
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│── .env               # Variables de entorno (no subir)
+│── package.json
+│── vite.config.js
+│── README.md
+│── estructura.txt
 ```
 
-## 🌿 2. Crear una nueva rama para tu tarea
+---
 
-⚠️ Nunca trabajes directo en main
+## ⚙️ Instalación y ejecución local
 
-```bash
-git checkout -b feature/nombre-de-tu-tarea
-```
-
-
-📦 Ejemplo:
+### 1️⃣ Clonar el repositorio
 
 ```bash
-git checkout -b feature/login
+git clone https://github.com/usuario/wake-up-cafeteria-front.git
 ```
 
-## 🧱 3. Hacer tus cambios
-
-Programá, editá y guardá tus archivos.
-Podés verificar el estado de tus cambios con:
+### 2️⃣ Instalar dependencias
 
 ```bash
-git status
+npm install
 ```
 
-## 💾 4. Guardar los cambios localmente
+### 3️⃣ Configurar variables de entorno
+
+Crear un archivo `.env` en la raíz con el siguiente ejemplo:
+
+```env
+# Backend API
+VITE_URL_BACK=http://localhost:3000
+
+# Stripe
+VITE_STRIPE_SECRET=pk_test_51SLVoaCEX1tTsJPUOgmXgzIm3PIUH5JAlAnKhMgipJRlqH7f5lBz9WhYI1umZXOnsUUy1QtCA1KR8RAmQcy4watd004XLBpEmu
+```
+
+> ⚠️ **No subir tu `.env` real**. Podés subir un `.env.example` con las mismas variables pero sin datos sensibles.
+
+### 4️⃣ Levantar el servidor en modo desarrollo
 
 ```bash
-git add .
-git commit -m "Descripción corta de lo que hiciste"
+npm run dev
 ```
 
-💡 Ejemplo:
+La app abrirá en:
+
+```
+http://localhost:5173/
+```
+
+---
+
+## 🛠️ Build para producción
 
 ```bash
-git commit -m "Agrego formulario de login y estilos básicos"
+npm run build
 ```
 
-## ☁️ 5. Subir tu rama al repositorio remoto
+Esto genera la carpeta **dist/** lista para deploy.
 
-```bash
-git push origin feature/nombre-de-tu-tarea
-```
+---
 
-## 🔀 6. Crear un Pull Request (PR)
+## 🔗 Conexión con el backend
 
-Entrá al repo en GitHub
+Este frontend consume la API backend mediante:
 
-Hacé clic en Pull requests → New pull request
+* `VITE_URL_BACK` → URL base de la API
+* Endpoints típicos:
 
-Seleccioná tu rama → main
+  * `/productos`
+  * `/pedidos`
+  * `/auth`
+  * `/checkout` (Stripe)
 
-Escribí un título claro (ej: “Agrego página de login”)
+Asegurate que el backend esté corriendo para que la app funcione correctamente.
 
-Clic en Create pull request
+---
 
-## 🧩 7. Revisión y Merge
+## 🛒 Funciones principales
 
-Revisar los cambios
+* Catálogo de productos
+* Carrito de compras
+* Página de detalles de productos
+* Página “About Us”
+* Integración con Stripe para pagos
+* Diseño responsive
+* Notificaciones con React Toastify
+* Íconos con Lucide React
 
-Si todo está correcto → Merge pull request
+---
 
-¡Listo! los cambios se integran a main 🎉
+## 🌐 Deploy recomendado
 
-## 💡 Reglas de oro
+* **Vercel**
+* **Netlify**
+* **Render**
+* **Firebase Hosting**
 
-🚫 No pushear directo al main 
+---
 
-🌿 1 rama = 1 funcionalidad
+## 👨‍💻 Autor
 
-🔁 Siempre crear Pull Requests para fusionar cambios
+**Salomón Prieto (Salo)** – Frontend Developer
 
-🧹 Actualizá tu rama con main si otros ya mergearon:
+---
 
-```bash
-git checkout main
-git pull origin main
-git checkout feature/mi-rama
-git merge main
-```
+## 📌 Notas
 
-👩‍💻 Tip: mantené los commits pequeños, claros y con mensajes descriptivos.
+* Seguir el `.env.example` para configurar el proyecto localmente.
+* Mantener las dependencias actualizadas con `npm update` periódicamente.
+* Usar `npm run lint` para mantener el código limpio y consistente.
+ con mensajes descriptivos.
 Esto ayuda a entender el historial y resolver conflictos fácilmente.
